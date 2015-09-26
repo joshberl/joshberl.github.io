@@ -13,19 +13,48 @@ img {
 }
 
 h1 {
-	
+	font-size: 250%;
+}
+
+h2 {
+	font-size: 200%;
 }
 
 div {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #3498db;
+	padding: 10px;
+}
+
+ul {
+	list-style-type: none;
+}
+
+ul li {
+
+}
+
+ul li ul {
+	
+}
+
+.link-box {
 	padding-top: 150px;
 	padding-bottom: 150px;
 	background-color: #1abc9c;
+	border-top: solid;
+	border-bottom: solid;
+	border-width: 5px;
+	border-color: white;
 }
 
-.resume-link {
-
+.link {
+	display: inline;
+	padding: 50px;
 }
 
-.bio-link {
-
+a {
+	text-decoration: none;
 }
