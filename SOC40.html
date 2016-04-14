@@ -1,0 +1,189 @@
+<html>
+  <head>
+    <!--Load the AJAX API-->
+    <title>TV Census</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+      google.charts.setOnLoadCallback(drawVisualization);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var USdata = new google.visualization.DataTable();
+        USdata.addColumn('string', 'Race Representation');
+        USdata.addColumn('number', 'Percent of Characters');
+        USdata.addRows([
+          ['Asian', 3.6],
+          ['African American', 12.1],
+          ['White', 69.1],
+          ['Native American', 0.7],
+          ['More than one Race', 1.6],
+          ['Other', 12.9]
+        ]);
+
+
+        var CBSdata = new google.visualization.DataTable();
+        CBSdata.addColumn('string', 'Race Representation');
+        CBSdata.addColumn('number', 'Percent of Characters');
+        CBSdata.addRows([
+          ['Asian', 5.34],
+          ['African American', 11.74],
+          ['White', 72.95],
+          ['Native American', 0],
+          ['More than one Race', 1.78],
+          ['Other', 2.14]
+        ]);
+
+        var NBCdata = new google.visualization.DataTable();
+        NBCdata.addColumn('string', 'Race Representation');
+        NBCdata.addColumn('number', 'Percent of Characters');
+        NBCdata.addRows([
+          ['Asian', 6.07],
+          ['African American', 14.08],
+          ['White', 79.13],
+          ['Native American', 0],
+          ['More than one Race', 0.49],
+          ['Other', 0]
+        ]);
+
+        var ABCdata = new google.visualization.DataTable();
+        ABCdata.addColumn('string', 'Race Representation');
+        ABCdata.addColumn('number', 'Percent of Characters');
+        ABCdata.addRows([
+          ['Asian', 5.70],
+          ['African American', 12.03],
+          ['White', 72.15],
+          ['Native American', 0],
+          ['More than one Race', 1.58],
+          ['Other', 8.54]
+        ]);
+
+        var FOXdata = new google.visualization.DataTable();
+        FOXdata.addColumn('string', 'Race Representation');
+        FOXdata.addColumn('number', 'Percent of Characters');
+        FOXdata.addRows([
+          ['Asian', 2.92],
+          ['African American', 16.37],
+          ['White', 64.33],
+          ['Native American', 0],
+          ['More than one Race', 4.09],
+          ['Other', 12.28]
+        ]);
+
+        var CWdata = new google.visualization.DataTable();
+        CWdata.addColumn('string', 'Race Representation');
+        CWdata.addColumn('number', 'Percent of Characters');
+        CWdata.addRows([
+          ['Asian', 3.55],
+          ['African American', 12.43],
+          ['White', 59.76],
+          ['Native American', 0.59],
+          ['More than one Race', 7.69],
+          ['Other', 15.98]
+        ]);
+
+        // Set chart options
+        var USoptions = {'title':'US Population',
+                       'width':400,
+                       'height':300};
+
+        var CBSoptions = {'title':'CBS Population',
+                       'width':400,
+                       'height':300};
+
+        var NBCoptions = {'title':'NBC Population',
+                       'width':400,
+                       'height':300};
+
+        var ABCoptions = {'title':'ABC Population',
+                       'width':400,
+                       'height':300};
+                       
+        var FOXoptions = {'title':'FOX Population',
+                       'width':400,
+                       'height':300};   
+
+        var CWoptions = {'title':'CW Population',
+                       'width':400,
+                       'height':300};                                         
+
+        // Instantiate and draw our chart, passing in some options.
+        var USchart = new google.visualization.PieChart(document.getElementById('USchart_div'));
+        USchart.draw(USdata, USoptions);
+        var NBCchart = new google.visualization.PieChart(document.getElementById('NBCchart_div'));
+        NBCchart.draw(NBCdata, NBCoptions);
+        var CBSchart = new google.visualization.PieChart(document.getElementById('CBSchart_div'));
+        CBSchart.draw(CBSdata, CBSoptions);
+        var FOXchart = new google.visualization.PieChart(document.getElementById('FOXchart_div'));
+        FOXchart.draw(FOXdata, FOXoptions);
+        var CWchart = new google.visualization.PieChart(document.getElementById('CWchart_div'));
+        CWchart.draw(CWdata, CWoptions);
+        var ABCchart = new google.visualization.PieChart(document.getElementById('ABCchart_div'));
+        ABCchart.draw(ABCdata, ABCoptions);
+      }
+
+      function drawVisualization() {
+        // Some raw data (not necessarily accurate)
+        var data = google.visualization.arrayToDataTable([
+         ['Race',             'US',     'CBS',   'ABC',  'NBC',  'FOX',  'CW'],
+         ['Asian',             3.6,      5.34,    5.70,   6.07,   2.92,  3.55],
+         ['African American', 12.1,     11.74,   12.03,  14.08,  16.37, 12.43],
+         ['White',            69.1,     72.95,   72.15,  79.13,  64.33, 59.76],
+         ['Native American',   0.7,         0,       0,      0,      0,  0.59],
+         ['Two or more Races', 1.6,      1.78,    1.58,   0.49,   4.09,  7.69],
+         ['Other',            12.9,      2.14,    8.54,      0,  12.28, 15.98]
+      ]);
+
+    var options = {
+      title : 'Race Representation by Channel',
+      vAxis: {title: 'Percentage'},
+      hAxis: {title: 'Race'},
+      seriesType: 'bars',
+      series: {6: {type: 'line'}}
+    };
+
+    var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
+    chart.draw(data, options);
+  }
+
+
+
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+<!--     <table>
+    <tr>
+        <td><div id="USchart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="NBCchart_div" style="border: 1px solid #ccc"></div></td>
+    </tr>
+    <tr>
+        <td><div id="CBSchart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="FOXchart_div" style="border: 1px solid #ccc"></div></td>
+    </tr>
+    <tr>
+        <td><div id="CWchart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="ABCchart_div" style="border: 1px solid #ccc"></div></td>
+    </tr>
+  </table> -->
+    <div id="USchart_div"></div>
+    <div id="NBCchart_div"></div>
+    <div id="CBSchart_div"></div>
+    <div id="FOXchart_div"></div>
+    <div id="CWchart_div"></div>
+    <div id="ABCchart_div"></div>
+    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+  </body>
+</html>
