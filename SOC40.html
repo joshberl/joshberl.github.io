@@ -3,7 +3,6 @@
     <!--Load the AJAX API-->
     <title>TV Census</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
 
@@ -143,7 +142,20 @@
          ['Native American',   0.7,         0,       0,      0,      0,  0.59],
          ['Two or more Races', 1.6,      1.78,    1.58,   0.49,   4.09,  7.69],
          ['Other',            12.9,      2.14,    8.54,      0,  12.28, 15.98]
-      ]);
+        ]);
+
+        var ethnicitydata = google.visualization.arrayToDataTable([
+         ['Ethnicity',              'US',     'CBS',   'ABC',  'NBC',  'FOX',  'CW'],
+         ['Hispanic or Latino',     17.4,       2.5,     4.4,    8.7,    3.5,   7.1],
+         ['Not Hispanic or Latino', 82.6,      92.9,    93.7,     91,   96.5,  92.9]
+        ]);
+
+        var genderdata = google.visualization.arrayToDataTable([
+         ['Gender',   'US',   'CBS',   'ABC',  'NBC',  'FOX',  'CW'],
+         ['Male',     50.6,    64.8,    56.7,   57.5,   57.3,  61.1],
+         ['Female',   49.1,    35.2,    43.3,   42.2,   41.5,  34.9],
+         ['Other',     0.3,       0,       0,    0.3,    1.2,     0]
+        ]);
 
     var options = {
       title : 'Race Representation by Channel',
@@ -153,8 +165,30 @@
       series: {6: {type: 'line'}}
     };
 
+    var ethnicityoptions = {
+      title : 'Ethincity Representation by Channel',
+      vAxis: {title: 'Percentage'},
+      hAxis: {title: 'Ethnicity'},
+      seriesType: 'bars',
+      series: {6: {type: 'line'}}
+    };
+
+    var genderoptions = {
+      title : 'Gender Representation by Channel',
+      vAxis: {title: 'Percentage'},
+      hAxis: {title: 'Gender'},
+      seriesType: 'bars',
+      series: {6: {type: 'line'}}
+    };
+
     var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
     chart.draw(data, options);
+
+    var ethnicitychart = new google.visualization.ComboChart(document.getElementById('eth_chart_div'));
+    ethnicitychart.draw(ethnicitydata, ethnicityoptions);
+
+    var genderchart = new google.visualization.ComboChart(document.getElementById('gen_chart_div'));
+    genderchart.draw(genderdata, genderoptions);
   }
 
 
@@ -164,26 +198,26 @@
 
   <body>
     <!--Div that will hold the pie chart-->
-<!--     <table>
+    <table>
     <tr>
         <td><div id="USchart_div" style="border: 1px solid #ccc"></div></td>
         <td><div id="NBCchart_div" style="border: 1px solid #ccc"></div></td>
-    </tr>
-    <tr>
         <td><div id="CBSchart_div" style="border: 1px solid #ccc"></div></td>
-        <td><div id="FOXchart_div" style="border: 1px solid #ccc"></div></td>
     </tr>
     <tr>
         <td><div id="CWchart_div" style="border: 1px solid #ccc"></div></td>
         <td><div id="ABCchart_div" style="border: 1px solid #ccc"></div></td>
+        <td><div id="FOXchart_div" style="border: 1px solid #ccc"></div></td>
     </tr>
-  </table> -->
-    <div id="USchart_div"></div>
+  </table>
+<!--     <div id="USchart_div"></div>
     <div id="NBCchart_div"></div>
     <div id="CBSchart_div"></div>
     <div id="FOXchart_div"></div>
     <div id="CWchart_div"></div>
-    <div id="ABCchart_div"></div>
-    <div id="chart_div" style="width: 900px; height: 500px;"></div>
+    <div id="ABCchart_div"></div> -->
+    <div id="chart_div" style="width: 100%; height: 500px; align: center"></div>
+    <div id="eth_chart_div" style="width: 100%; height: 500px; align: center"></div>
+    <div id="gen_chart_div" style="width: 100%; height: 500px; align: center"></div>
   </body>
 </html>
