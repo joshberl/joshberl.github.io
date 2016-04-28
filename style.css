@@ -8,7 +8,7 @@ body {
 	margin-right: auto;
 	text-align: center;
 	color: white;
-	font-family: Verdana
+	font-family: Verdana;
 }
 
 img {
@@ -18,6 +18,8 @@ img {
 
 .work-logo {
 	width: 100px;
+	margin-left: 45%;
+	margin-right: 45%;
 	height: 100px;
 	padding: 10px;
 }
@@ -31,8 +33,10 @@ h2 {
 }
 
 div {
-	text-align: center;
+	text-align: left;
 	margin-left: auto;
+	padding: 10%;
+	text-indent: 10%;
 	margin-right: auto;
 	background-color: #3498db;
 	margin-bottom: 10px;
@@ -41,6 +45,7 @@ div {
 
 ul {
 	list-style-type: none;
+	padding-bottom: 1%;
 }
 
 .time {
@@ -49,9 +54,15 @@ ul {
 	font-style: oblique;
 }
 
+
 .link-box {
+	text-align: center;
+	margin-bottom: 10px;
+	padding: 10px;
 	padding-top: 100px;
 	padding-bottom: 100px;
+	margin-left: auto;
+	margin-right: auto;
 	background-color: #1abc9c;
 	border-top: solid;
 	border-bottom: solid;
@@ -62,6 +73,11 @@ ul {
 .link {
 	display: inline;
 	padding: 50px;
+}
+
+.workplace {
+	font-size: 250%;
+	font-family: Verdana;
 }
 
 a {
